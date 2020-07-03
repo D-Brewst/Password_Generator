@@ -2,8 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword(){
+  // Prompt to ask how many characters that want in the password
   var length = prompt("How many characters do you want in your passsword?");
+  // Convert length from a string to an integer
   var num = parseInt(length);
+  // After they choose an acceptable amount of characters, allow them to choose what types of characters they want in their password. If they dont choose an acceptable amount, prompt them to try again.
   if(num >= 8 && num <= 128){
     var numbers = confirm("Do you want numbers in your password?");
     var symbols = confirm("Do you want symbols in your password?");
@@ -12,12 +15,15 @@ function generatePassword(){
   } else{
     length = alert("Your number needs to be between 8 and 128. Try again.");
   }
+  // Set up separate arrays of number, uppercase, lowercase, and symbol characters.
   var arrNum = [0,1,2,3,4,5,6,7,8,9];
   var arrUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   var arrLow = arrUp.map(elem => elem.toLowerCase());
   var arrSym = ['@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
+  // Set up an empty array
   var final = [];
 
+  // Push the character types that they want included in their passcode into the empty final array.
   if(numbers == true){
     final.push(arrNum);
   }
@@ -31,13 +37,18 @@ function generatePassword(){
     final.push(arrLow);
   }
   
+  // Flatten the final array to convert it from a 2 dimentional array to a on dimentional array.
   var trueFinal = final.flat();
+
+  // Create another empty array to store the randomly selected password characters.
   var code = [];
   
+  // Randomly select characters from the trueFinal array and push them into the code array.
   for(var i = 0; i < num; i++){
     var character = trueFinal[Math.floor(Math.random() * trueFinal.length)];
     code.push(character);
   }
+  // Combine the code array into a string and return the string.
   return code.join("");
 }
 
