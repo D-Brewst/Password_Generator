@@ -18,6 +18,7 @@ function generatePassword(){
   // Set up separate arrays of number, uppercase, lowercase, and symbol characters.
   var arrNum = [0,1,2,3,4,5,6,7,8,9];
   var arrUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  // map method applied toLowercase() to all elements in the uppercase array to create this lowercase array
   var arrLow = arrUp.map(elem => elem.toLowerCase());
   var arrSym = ['@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
   // Set up an empty array
